@@ -1,0 +1,6 @@
+BEGIN;
+
+DROP TABLE api_key;
+DROP TABLE app;
+
+COMMIT;

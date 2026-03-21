@@ -1,0 +1,56 @@
+debug: true
+  
+server:
+  host: 0.0.0.0
+  port: 8080
+
+logger:
+  filepath: logs/%Y-%m-%d.log
+  max_age_days: 30
+  rotation_hours: 24
+
+database:
+  host: 127.0.0.1
+  port: 5432
+  ssl_mode: false
+  username: postgres
+  db_name: pulse_watch
+
+elasticsearch: 
+  addresses: 
+    - https://127.0.0.1:9200
+
+kafka:
+  producer_name: 'pulse-watch-producer'
+  servers:
+    - "127.0.0.1:9092"
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+
+auth:
+  access_token_ttl_minutes: 15
+  refresh_token_ttl_days: 30
+
+queue_handlers:
+
+  - handler: logs_handler
+    workers_count: 1
+    consumer_group: log_handlers_group
+    dlq_topic: logs.dlq
+    topics: 
+      - logs
+
+  - handler: send_alerts
+    workers_count: 1
+    consumer_group: send_alerts_group
+    topics: 
+      - alerts.send
+
+tasks:
+  - task: live_metrics:process
+    cron: "@every 5s"
+
+  - task: metrics:clear
+    cron: "0 0 * * *" # Каждый день в 00:00

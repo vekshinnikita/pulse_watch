@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.vscode
+
+cmd/test
+
+configs/*
+!configs/config.example.yaml
+
+__debug_bin*
