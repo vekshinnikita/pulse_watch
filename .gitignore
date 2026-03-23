@@ -7,4 +7,6 @@ cmd/test
 configs/*
 !configs/config.example.yaml
 
+docker-compose-services.yaml
+
 __debug_bin*

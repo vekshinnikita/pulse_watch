@@ -21,6 +21,4 @@ const (
 	MetricExpire          = 2 * time.Minute
 	BaseMetricWindowTime  = 5  // Секунды
 	BaseMetricCommitDelay = 10 // Секунды
-
-	AlertMetricWindowTime = 60 // Секунды
 )

@@ -10,7 +10,7 @@ logger:
   rotation_hours: 24
 
 database:
-  host: 127.0.0.1
+  host: localhost
   port: 5432
   ssl_mode: false
   username: postgres
@@ -18,15 +18,15 @@ database:
 
 elasticsearch: 
   addresses: 
-    - https://127.0.0.1:9200
+    - https://localhost:9200
 
 kafka:
   producer_name: 'pulse-watch-producer'
   servers:
-    - "127.0.0.1:9092"
+    - "localhost:9092"
 
 redis:
-  host: 127.0.0.1
+  host: localhost
   port: 6379
 
 auth:

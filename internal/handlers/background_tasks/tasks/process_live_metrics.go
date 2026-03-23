@@ -43,7 +43,7 @@ func (t *ProcessLiveMetricsTask) sendOneMinuteMetricsTasks(
 
 	// Будем агрегировать за прошедшую минуту
 	payload := &dtos.WindowStartPayload{
-		WindowStart: windowStartUnix - constants.AlertMetricWindowTime,
+		WindowStart: windowStartUnix - 60,
 	}
 
 	payloadBytes, err := json.Marshal(payload)
